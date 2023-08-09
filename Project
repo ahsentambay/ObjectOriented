@@ -1,0 +1,420 @@
+# define the bookstore class to create an object
+class BookStore:
+    """Define the BookStore class"""
+    def __init__(self, book_name, author_name, genre_of_book, publisher, public_year, stock_status):
+        self.book_name = book_name
+        self.author_name = author_name
+        self.genre_of_book = genre_of_book
+        self.publisher= publisher
+        self.public_year = public_year
+        self.stock_status = stock_status
+        
+first_order = BookStore("The Republic", "Platon", "Philosophy","BasicBooks",2023,1)
+print(f'Order Detail \nBook: {first_order.book_name}, {first_order.author_name} \nGenre: {first_order.genre_of_book} \nPublisher:{first_order.publisher},{first_order.public_year}\nStocked: {first_order.stock_status}') 
+Order Detail 
+Book: The Republic, Platon 
+Genre: Philosophy 
+Publisher:BasicBooks,2023
+Stocked: 1
+In [130]:
+# define default parameters for __init__ on a class
+# Use your default parameters sequentially at the end
+class BookStore:
+    """Define the BookStore class"""
+    def __init__(self, book_name, author_name, genre_of_book, publisher="BasicBooks", public_year=2023, stock_status=0):
+        self.book_name = book_name
+        self.author_name = author_name
+        self.genre_of_book = genre_of_book
+        self.publisher= publisher
+        self.public_year = public_year
+        self.stock_status = stock_status
+    
+first_order = BookStore("The Republic", "Platon", "Philosophy" ,stock_status=5)
+second_order = BookStore("Feeling Good", "David D. Burns", "Psychology", publisher="Besties", public_year=2020 )
+
+print(f'Order Detail \nBook: {first_order.book_name}, {first_order.author_name} \nGenre: {first_order.genre_of_book} \nPublisher:{first_order.publisher},{first_order.public_year}\nStocked: {first_order.stock_status}') 
+
+print(f'\nOrder Detail \nBook: {second_order.book_name}, {second_order.author_name} \nGenre: {second_order.genre_of_book} \nPublisher:{second_order.publisher},{second_order.public_year}\nStocked: {second_order.stock_status}') 
+Order Detail 
+Book: The Republic, Platon 
+Genre: Philosophy 
+Publisher:BasicBooks,2023
+Stocked: 5
+
+Order Detail 
+Book: Feeling Good, David D. Burns 
+Genre: Psychology 
+Publisher:Besties,2020
+Stocked: 0
+In [131]:
+#use union for class attribute or variable.
+class BookStore:
+    """Define the BookStore class"""
+    union = "This book was send by Ahsen's BookStore"
+    def __init__(self, book_name, author_name, genre_of_book, publisher="BasicBooks", public_year=2023, stock_status=0):
+        self.book_name = book_name
+        self.author_name = author_name
+        self.genre_of_book = genre_of_book
+        self.publisher= publisher
+        self.public_year = public_year
+        self.stock_status = stock_status
+    
+first_order = BookStore("The Republic", "Platon", "Philosophy" ,stock_status=5)
+second_order = BookStore("Feeling Good", "David D. Burns", "Psychology", publisher="Besties", public_year=2020 )
+
+print(f'Order Detail \nBook: {first_order.book_name}, {first_order.author_name} \nGenre: {first_order.genre_of_book} \nPublisher:{first_order.publisher},{first_order.public_year}\nStocked: {first_order.stock_status}\n{first_order.union} ') 
+
+print(f'\nOrder Detail \nBook: {second_order.book_name}, {second_order.author_name} \nGenre: {second_order.genre_of_book} \nPublisher:{second_order.publisher},{second_order.public_year}\nStocked: {second_order.stock_status}\n{first_order.union}') 
+Order Detail 
+Book: The Republic, Platon 
+Genre: Philosophy 
+Publisher:BasicBooks,2023
+Stocked: 5
+This book was send by Ahsen's BookStore 
+
+Order Detail 
+Book: Feeling Good, David D. Burns 
+Genre: Psychology 
+Publisher:Besties,2020
+Stocked: 0
+This book was send by Ahsen's BookStore
+In [132]:
+#Change the object attributes with Mutability
+class BookStore:
+    """Define the BookStore class"""
+    union = "This book was send by Ahsen's BookStore"
+    def __init__(self, book_name, author_name, genre_of_book, publisher="BasicBooks", public_year=2023, stock_status=0):
+        self.book_name = book_name
+        self.author_name = author_name
+        self.genre_of_book = genre_of_book
+        self.publisher= publisher
+        self.public_year = public_year
+        self.stock_status = stock_status
+
+    def print_stock_status(s):
+      """Print the stock status"""
+      if s.stock_status == 0:
+        print(f"This book is currently unavailable. Public Year:{s.public_year} \nPlease click for other books by the author {s.author_name} \nPlease click for other books by the publisher {s.publisher}")
+      else:
+        print(f"This book is available: last {s.stock_status} books. Public Year:{s.public_year} \nYou may be interested in other books by the author {s.author_name} \nYou may be interested in other books by the publisher: {s.publisher}")
+
+first_order = BookStore("The Republic", "Platon", "Philosophy" ,stock_status=5)
+second_order = BookStore("Feeling Good", "David D. Burns", "Psychology", publisher="Besties", public_year=2020 )
+
+
+print_stock_status(second_order)
+This book is currently unavailable. Public Year:2020 
+Please click for other books by the author David D. Burns 
+Please click for other books by the publisher Besties
+In [133]:
+second_order.stock_status += 100
+second_order.public_year-=5
+print_stock_status(second_order)
+This book is available: last 100 books. Public Year:2015 
+You may be interested in other books by the author David D. Burns 
+You may be interested in other books by the publisher: Besties
+In [134]:
+class BookStore:
+    """Define the BookStore class"""
+    union = "This book was send by Ahsen's BookStore"
+    def __init__(self, book_name, author_name, genre_of_book, publisher="BasicBooks", public_year=2023, stock_status=0):
+        self.book_name = book_name
+        self.author_name = author_name
+        self.genre_of_book = genre_of_book
+        self.publisher= publisher
+        self.public_year = public_year
+        self.stock_status = stock_status
+
+    def print_stock_status(s):
+      """Print the stock status"""
+      if s.stock_status == 0:
+        print(f"This book is currently unavailable. Public Year:{s.public_year} \nPlease click for other books by the author {s.author_name} \nPlease click for other books by the publisher {s.publisher}")
+      else:
+        print(f"This book is available: last {s.stock_status} books. Public Year:{s.public_year} \nYou may be interested in other books by the author {s.author_name} \nYou may be interested in other books by the publisher: {s.publisher}")
+
+    def change_stock(self, amount):
+        """Change stock"""
+        self.stock_status += amount
+
+    def change_public_year(self):
+        """Change public_year"""
+        self.public_year -= 5      
+
+        
+second_order = BookStore("Feeling Good", "David D. Burns", "Psychology", publisher="Besties", public_year=2020, stock_status=10)
+
+
+second_order.print_stock_status()
+second_order.change_stock(100)
+second_order.change_public_year()
+second_order.print_stock_status()
+This book is available: last 10 books. Public Year:2020 
+You may be interested in other books by the author David D. Burns 
+You may be interested in other books by the publisher: Besties
+This book is available: last 110 books. Public Year:2015 
+You may be interested in other books by the author David D. Burns 
+You may be interested in other books by the publisher: Besties
+In [135]:
+#More on Methods and Objects
+class Netflix:
+  """Define Netflix class"""
+  def __init__(self):
+    self.series = []
+    self.films = []
+    self.documentaries = []
+    self.animes = []
+    
+  def add_series(self, s):
+    """Add a series (s) to the Netflix (self)"""
+    self.series.append(s)
+  def add_film(self, f):
+    """Add a film (f) to the Netflix (self)"""
+    self.films.append(f)
+    
+myfavlist = Netflix()
+myfavlist.add_series("Brooklyn Nine-Nine")
+print(myfavlist.series)
+['Brooklyn Nine-Nine']
+In [136]:
+myfavlist.add_film("Titanic")
+print(myfavlist.films)
+['Titanic']
+In [137]:
+myfavlist.add_series("Black Mirror")
+print(myfavlist.series)
+['Brooklyn Nine-Nine', 'Black Mirror']
+In [138]:
+myfavlist.add_series("Gilmore Girls")
+print(myfavlist.series)
+['Brooklyn Nine-Nine', 'Black Mirror', 'Gilmore Girls']
+In [139]:
+class Netflix:
+  """Define Netflix class"""
+  def __init__(self):
+    self.series = []
+    self.films = []
+    self.documentaries = []
+    self.animes = []
+    
+  def add_series(self, s):
+    """Add a series (s) to the Netflix (self)"""
+    self.series.append(s)
+    
+  def add_film(self, f):
+    """Add a film (f) to the Netflix (self)"""
+    self.films.append(f)
+    
+  def add_documentary(self, dc):
+    """Add a documentary (s) to the Netflix (self)"""
+    self.documentaries.append(dc)
+    
+  def add_anime(self, f):
+    """Add a anime (f) to the Netflix (self)"""
+    self.animes.append(f)    
+    
+  def print_favs(self):
+    """Prints the fav list"""
+    favs = [self.series, self.films, self.documentaries, self.animes]
+    for position in range(4):
+      fav = favs[position]
+      if len(fav) == 0: #check for an empty list
+        print(f"No {self.favories(position)} added your favorite movie list.")
+      elif len(fav) == 1: #check for only one item
+        print(f"{fav[0]} was added your favorite movie list.")
+      elif len(fav) == 2: #check for only two items
+        print(f"{fav[0]} and {fav[1]} were added your favorite movie list.")
+  
+  
+  
+  def favories(self, position):
+    pass
+
+  def favories(self, position):
+    if position == 0:
+      return "series was"
+    elif position == 1:
+      return "film was"
+    elif position == 2:
+      return "documentery was"
+    elif position == 3:
+      return "anime was"
+
+myfavlist = Netflix()
+myfavlist.add_series("Doctor Who")
+myfavlist.add_series("Black List")
+myfavlist.add_film("Iron Man")
+myfavlist.add_film("John Wick")
+myfavlist.add_film("Fast and Furious")
+myfavlist.add_documentary("My World")
+myfavlist.print_favs()
+Doctor Who and Black List were added your favorite movie list.
+My World was added your favorite movie list.
+No anime was added your favorite movie list.
+In [140]:
+class Netflix:
+  """Define Netflix class"""
+    def __init__(self):
+        self.series = []
+        self.films = []
+        self.documentaries = []
+        self.animes = []
+    
+    def add_series(self, s):
+        """Add a series (s) to the Netflix (self)"""
+        self.series.append(s)
+    
+    def add_film(self, f):
+        """Add a film (f) to the Netflix (self)"""
+        self.films.append(f)
+    
+    def add_documentary(self, dc):
+        """Add a documentary (s) to the Netflix (self)"""
+        self.documentaries.append(dc)
+    
+    def add_anime(self, f):
+        """Add a anime (f) to the Netflix (self)"""
+        self.animes.append(f)    
+       
+    def print_favorites(self):
+        """Print the favorites list"""
+        favorites = [self.series, self.films, self.documentaries, self.animes]
+        for position in range(4):
+            fav_list = favorites[position]
+            if len(fav_list) == 0:  # Check for an empty list
+                print(f"No {self.favorite_type(position)} added to your favorite movie list.")
+            elif len(fav_list) == 1:  # Check for only one item
+                print(f"{fav_list[0]} was added to your favorite movie list.")
+            elif len(fav_list) == 2:  # Check for only two items
+                print(f"{fav_list[0]} and {fav_list[1]} were added to your favorite movie list.")
+            else:  # Many items were added
+                for item in fav_list:
+                    if fav_list.index(item) == 0:  # Check if first element
+                        print(f"{item.capitalize()}, ", end="")
+                    elif item == fav_list[-1]:  # Check if last element
+                        print(f"and {item} ", end="")
+                    else:
+                        print(f"{item}, ", end="")
+                print("were added to your favorite movie list.")
+
+    def favorite_type(self, position):
+        if position == 0:
+            return "series"
+        elif position == 1:
+            return "film"
+        elif position == 2:
+            return "documentary"
+        elif position == 3:
+            return "anime"
+
+
+my_fav_list = Netflix()
+my_fav_list.add_series("Doctor Who")
+my_fav_list.add_series("Black List")
+my_fav_list.add_film("Iron Man")
+my_fav_list.add_film("John Wick")
+my_fav_list.add_film("Fast and Furious")
+my_fav_list.add_documentary("My World")
+my_fav_list.print_favorites()
+Doctor Who and Black List were added to your favorite movie list.
+Iron man, John Wick, and Fast and Furious were added to your favorite movie list.
+My World was added to your favorite movie list.
+No anime added to your favorite movie list.
+In [141]:
+#defining class methods
+class Incomes:
+    """Define the Incomes class"""
+    income = 500000
+    def __init__(self, experience, position):
+        self.experience = experience
+        self.position = position   
+    
+    @classmethod
+    def change_income(cls, new_income):
+        cls.income = new_income
+        
+employee_1 = Incomes("5", "Data Scientist")
+employee_2 = Incomes("2", "Data Engineer")
+Incomes.change_income(6000000)
+
+print(employee_1.income)
+print(employee_2.income)
+6000000
+6000000
+In [121]:
+#Class methods take cls as a parameter and not self. To change the instance variable:
+class Incomes:
+    """Define the Incomes class"""
+    income = 500000
+    def __init__(self, experience, position):
+        self.experience = experience
+        self.position = position   
+    
+    @classmethod
+    def change_exp(cls, new_exp):
+        cls.experience = new_exp
+        
+employee = Incomes("4", "HR")
+employee.change_exp("2")
+print(employee.experience)
+4
+In [122]:
+#Factory Methods
+class Programming:
+  """Programming class with a list of programs"""
+  def __init__(self, programs ):
+    self.programs= programs
+    
+my_programs = Programming(["Python", "SQL", "Java"])
+print(my_programs.programs)
+['Python', 'SQL', 'Java']
+In [124]:
+class Programming:
+  """Programming class with a list of programs"""
+  def __init__(self, programs ):
+    self.programs= programs
+    
+  @classmethod
+  def choose_programs(cls):
+    return Programming(["SQL", "C++", "Java Script"])
+    
+my_programs = Programming.choose_programs()
+print(my_programs.programs)
+['SQL', 'C++', 'Java Script']
+In [128]:
+#Statistic Methods
+class Ratio:
+  """Ratio class"""
+  def __init__(self, n, d):
+    self.numerator = n
+    self.denominator= d
+    
+  def ratio(self):
+    """Calculate the ratio"""
+    return self.numerator / self.denominator
+  
+ratio_1 = Ratio(5, 33)
+ratio_2 = Ratio(2, 9)
+combined_ratio = ratio_1.ratio() + ratio_2.ratio()
+print(combined_ratio)
+0.3737373737373737
+In [129]:
+class Ratio:
+  """Ratio class"""
+  def __init__(self, n, d):
+    self.numerator = n
+    self.denominator= d
+    
+  def ratio(self):
+    """Calculate the ratio"""
+    return self.numerator / self.denominator
+  
+  @staticmethod
+  def combined_ratio(r1, r2):
+    """Find combined area of two rectangles"""
+    return r1.ratio() + r2.ratio()
+ 
+ratio_1 = Ratio(5, 33)
+ratio_2 = Ratio(2, 9)
+combined_ratio = Ratio.combined_ratio(ratio_1, ratio_2)
+print(combined_ratio)
+0.3737373737373737
